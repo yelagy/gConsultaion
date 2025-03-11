@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+    <a class="navbar-brand" th:href="@{/patients}"><i class="bi bi-app-indicator"></i> GC</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <!-- Menu Patients -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPatients" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Patients
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownPatients">
+                    <a class="dropdown-item" th:href="@{/patients}"><i class="bi bi-person-lines-fill"></i> Liste des patients</a>
+                    <a class="dropdown-item" th:href="@{/patients/add}"><i class="bi bi-person-add"></i> Ajouter un patient</a>
+                </div>
+            </li>
+            <!-- Menu Consultations -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConsultations" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Consultations
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownConsultations">
+                    <a class="dropdown-item" th:href="@{/consultations}"><i class="bi bi-card-list"></i> Liste des consultations</a>
+                    <a class="dropdown-item" th:href="@{/consultations/add}"><i class="bi bi-plus-circle-dotted"></i> Ajouter une consultation</a>
+                </div>
+            </li>
+            <!-- Menu Contact -->
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/contact}">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,42 @@
+<div th:fragment="content">
+
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5>Liste des Patients</h5>
+            <a th:href="@{/patients/add}" class="btn btn-primary btn-sm"><i class="bi bi-person-add"></i> Ajouter</a>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>#ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="patient : ${patients}">
+                    <td th:text="${patient.id}"></td>
+                    <td th:text="${patient.nom}"></td>
+                    <td th:text="${patient.prenom}"></td>
+                    <td th:text="${patient.email}"></td>
+                    <td>
+                        <a th:href="@{/patients/edit/{id}(id=${patient.id})}" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <button class="btn btn-danger btn-sm" th:attr="data-id=${patient.id}, data-entity='patients'" onclick="confirmDelete(this)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(patients)}">
+                    <td colspan="5" class="text-center text-muted">Aucune patient trouvé.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

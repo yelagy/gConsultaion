@@ -1,0 +1,62 @@
+<div th:fragment="content">
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5>Liste des Consultations</h5>
+            <a th:href="@{/consultations/add}" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle-dotted"></i> Ajouter</a>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>#ID</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Patient</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="consultation : ${consultations}">
+                    <td th:text="${consultation.id}"></td>
+                    <td th:text="${consultation.dateConsultation}"></td>
+                    <td th:text="${consultation.description}"></td>
+                    <td th:text="${consultation.patient.nom + ' ' + consultation.patient.prenom}"></td>
+                    <td>
+                        <a th:href="@{/consultations/edit/{id}(id=${consultation.id})}" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <button class="btn btn-danger btn-sm" th:attr="data-id=${consultation.id}, data-entity='consultations'" onclick="confirmDelete(this)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(consultations)}">
+                    <td colspan="5" class="text-center text-muted">Aucune consultation trouvée.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmDelete(element) {
+        let patientId = element.getAttribute("data-id");
+
+        Swal.fire({
+            title: "Êtes-vous sûr ?",
+            text: "Cette action est irréversible !",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Oui, supprimer !",
+            cancelButtonText: "Annuler"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/patients/delete/" + patientId;
+            }
+        });
+    }
+</script>
