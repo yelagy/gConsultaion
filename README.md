@@ -55,7 +55,7 @@
    ```bash
    mvn spring-boot:run
    ```
-   L'application sera accessible sur `http://localhost:8080`
+   L'application sera accessible sur `http://localhost:8080/patients`
 
 ## Utilisation
 - **Ajouter un patient** : Aller sur `/patients/add`
