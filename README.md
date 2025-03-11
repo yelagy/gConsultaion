@@ -21,7 +21,7 @@
 - Java 17+
 - MySQL
 - Maven
-- Un IDE comme IntelliJ IDEA ou Eclipse
+- Un IDE comme IntelliJ IDEA
 
 ### Étapes
 1. **Cloner le projet**
